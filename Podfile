@@ -5,6 +5,7 @@ target 'dota' do
 
   pod 'Alamofire', '~> 4.7'
   pod 'ObjectMapper'
+  pod 'OHHTTPStubs/Swift'
 
   target 'HeroTest' do
     inherit! :search_paths

@@ -15,6 +15,9 @@
 		4A1D442420EB5D1600F6C983 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A1D442320EB5D1600F6C983 /* Assets.xcassets */; };
 		4A1D442720EB5D1600F6C983 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A1D442520EB5D1600F6C983 /* LaunchScreen.storyboard */; };
 		4AB40C4620EDD9FE00BA0740 /* Hero.json in Resources */ = {isa = PBXBuildFile; fileRef = 4AB40C4020EDD3C900BA0740 /* Hero.json */; };
+		4AC021B720F6FFBE00EBCAF5 /* GetHeroes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC021B620F6FFBE00EBCAF5 /* GetHeroes.swift */; };
+		4AC021B920F7010100EBCAF5 /* GetHeroesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC021B820F7010100EBCAF5 /* GetHeroesPresenter.swift */; };
+		4AC021BB20F70B6C00EBCAF5 /* heroPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC021BA20F70B6C00EBCAF5 /* heroPresenterTest.swift */; };
 		4AD195C020EE295700B29CA0 /* JSONFileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB40C4420EDD46400BA0740 /* JSONFileReader.swift */; };
 		8884888977C687667AB77920 /* Pods_dota.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C93381EA4620464D048C890E /* Pods_dota.framework */; };
 		F53A278DABE929D69F0002E8 /* Pods_HeroTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEA4A86786B8F9E195E8E427 /* Pods_HeroTest.framework */; };
@@ -46,6 +49,9 @@
 		4A1D442820EB5D1600F6C983 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4AB40C4020EDD3C900BA0740 /* Hero.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Hero.json; sourceTree = "<group>"; };
 		4AB40C4420EDD46400BA0740 /* JSONFileReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONFileReader.swift; sourceTree = "<group>"; };
+		4AC021B620F6FFBE00EBCAF5 /* GetHeroes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHeroes.swift; sourceTree = "<group>"; };
+		4AC021B820F7010100EBCAF5 /* GetHeroesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHeroesPresenter.swift; sourceTree = "<group>"; };
+		4AC021BA20F70B6C00EBCAF5 /* heroPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = heroPresenterTest.swift; sourceTree = "<group>"; };
 		54B9483BFA2B486E64387855 /* Pods-HeroTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeroTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HeroTest/Pods-HeroTest.debug.xcconfig"; sourceTree = "<group>"; };
 		9D175729ECE8A833EA11E336 /* Pods-HeroTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeroTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-HeroTest/Pods-HeroTest.release.xcconfig"; sourceTree = "<group>"; };
 		BEA4A86786B8F9E195E8E427 /* Pods_HeroTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HeroTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -113,6 +119,7 @@
 		4A1D441B20EB5D1500F6C983 /* dota */ = {
 			isa = PBXGroup;
 			children = (
+				4AC021B520F6FF9F00EBCAF5 /* Request */,
 				4AB40C4220EDD42900BA0740 /* Library */,
 				4A0BF4B620EB601E00757B59 /* Model */,
 				4A1D441C20EB5D1500F6C983 /* AppDelegate.swift */,
@@ -139,6 +146,16 @@
 				4AB40C4420EDD46400BA0740 /* JSONFileReader.swift */,
 			);
 			path = TestUtils;
+			sourceTree = "<group>";
+		};
+		4AC021B520F6FF9F00EBCAF5 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				4AC021B620F6FFBE00EBCAF5 /* GetHeroes.swift */,
+				4AC021B820F7010100EBCAF5 /* GetHeroesPresenter.swift */,
+				4AC021BA20F70B6C00EBCAF5 /* heroPresenterTest.swift */,
+			);
+			path = Request;
 			sourceTree = "<group>";
 		};
 		885C8A7FE763A25B73F3EAE9 /* Frameworks */ = {
@@ -288,11 +305,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-dota/Pods-dota-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/OHHTTPStubs/OHHTTPStubs.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OHHTTPStubs.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -325,6 +344,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AC021BB20F70B6C00EBCAF5 /* heroPresenterTest.swift in Sources */,
 				4AD195C020EE295700B29CA0 /* JSONFileReader.swift in Sources */,
 				4A0BF4C620EB735C00757B59 /* HeroTest.swift in Sources */,
 			);
@@ -334,9 +354,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AC021B720F6FFBE00EBCAF5 /* GetHeroes.swift in Sources */,
 				4A1D441F20EB5D1500F6C983 /* ViewController.swift in Sources */,
 				4A1D441D20EB5D1500F6C983 /* AppDelegate.swift in Sources */,
 				4A0BF4B820EB604900757B59 /* Hero.swift in Sources */,
+				4AC021B920F7010100EBCAF5 /* GetHeroesPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
