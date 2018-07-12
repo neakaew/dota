@@ -1,5 +1,7 @@
+
 import Foundation.NSURLSession
 import ObjectMapper
+import Alamofire
 
 protocol GetHeroesPresenterProtocol: class {
     func getHeroes(didFinishedWithSuccess heroes: [Hero])
@@ -8,25 +10,22 @@ protocol GetHeroesPresenterProtocol: class {
 
 class GetHeroesPresenter {
     weak var delegate: GetHeroesPresenterProtocol?
+    let url =  URL(string: "https://api.opendota.com/api/heroes")!
     
     func getHeros() {
-        let url = URL(string: "https://api.opendota.com/api/heroes")!
-        URLSession.shared.dataTask(with: url, completionHandler: completionHandler ).resume()
-        
+        Alamofire.request(url).response(completionHandler:self.completionHandler).resume()
     }
     
-    private func completionHandler(_ data: Data?, _ response: URLResponse?, error: Error?) {
-            if let UnwrappedError = error {
-                self.delegate?.getHeroes(didFinishedWithError: UnwrappedError)
-                return
-            }
-            if let unwrappedData = data {
-                let heroes = try! JSONDecoder().decode([Hero].self, from: unwrappedData)
-                
-                //let text = String(data: unwrappedData, encoding: String.Encoding.utf8)!
-                self.delegate?.getHeroes(didFinishedWithSuccess: heroes)
-                return
-            }
+    private func completionHandler(response: DefaultDataResponse) {
+        if let error = response.error {
+            self.delegate?.getHeroes(didFinishedWithError: error)
+            return
+        }
+        if let data = response.data {
+            let heroes = try! JSONDecoder().decode([Hero].self, from: data)
+            self.delegate?.getHeroes(didFinishedWithSuccess: heroes)
+            return
         }
     }
+}
 
